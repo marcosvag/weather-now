@@ -4,15 +4,15 @@ const element = (element) => document.getElementById(element);
 form.addEventListener("submit", getWeather);
 
 async function getWeather(event) {
-  event.preventDefault()
+  event.preventDefault();
   const location_inputed = element("inputTxt").value;
   location_inputed.trim();
   try {
-    const weather = await fetch(`https://api-weather-marcosag.herokuapp.com/${location_inputed}`)
+    const weather = await fetch(`https://api-weather-marcosag.herokuapp.com/${location_inputed}`);
     const data = await weather.json();
-    addWeatherInfo(data)
+    addWeatherInfo(data);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
@@ -32,6 +32,6 @@ function addWeatherInfo(data) {
     element(`forecast-img${e}`).src = `http:${data.forecast.forecastday[0].hour[fourTofourHours[e]].condition.icon}`;
     element(`forecast-temperature${e}`).innerHTML = `${data.forecast.forecastday[0].hour[fourTofourHours[e]].temp_c.toFixed(1)}°`;
   }
-  element('data-container').classList.remove('none')
-  element('main').classList.add('main-container')
+  element('data-container').classList.remove('none');
+  element('main').classList.add('main-container');
 }
