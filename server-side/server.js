@@ -43,7 +43,7 @@ app.get('/:city', async (request, response) => {
                     "forecast_temp_c": fullWeatherInfo["forecast"]["forecastday"][1]["hour"][e]["temp_c"],
                 })
         }
-        response.status(200).send(treatedWeatherInfo);
+        response.status(200).send(JSON.stringify(treatedWeatherInfo));
     } catch (error) {
         console.error(error)
         response.status(500).send('Internal Server Error')
