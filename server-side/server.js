@@ -25,7 +25,7 @@ app.get('/:city', async (request, response) => {
             "feelslike_c": fullWeatherInfo["current"]["feelslike_c"],
             "current_img": fullWeatherInfo["current"]["condition"]["icon"],
             "current_text": fullWeatherInfo["current"]["condition"]["text"],
-            "last_updated": fullWeatherInfo["current"]["condition"]["last_updated"],
+            "last_updated": fullWeatherInfo["current"]["last_updated"],
             "forecast_hourly": {
                 "today": [],
                 "tomorrow": []
@@ -34,13 +34,11 @@ app.get('/:city', async (request, response) => {
         for(let e = 0; e <= 23; e++){
             treatedWeatherInfo["forecast_hourly"]["today"].push(
             {
-                "forecast_time": fullWeatherInfo["forecast"]["forecastday"][0]["hour"][e]["time"],
                 "forecast_img": fullWeatherInfo["forecast"]["forecastday"][0]["hour"][e]["condition"]["icon"],
                 "forecast_temp_c": fullWeatherInfo["forecast"]["forecastday"][0]["hour"][e]["temp_c"],
             })
             treatedWeatherInfo["forecast_hourly"]["tomorrow"].push(
                 {
-                    "forecast_time": fullWeatherInfo["forecast"]["forecastday"][1]["hour"][e]["time"],
                     "forecast_img": fullWeatherInfo["forecast"]["forecastday"][1]["hour"][e]["condition"]["icon"],
                     "forecast_temp_c": fullWeatherInfo["forecast"]["forecastday"][1]["hour"][e]["temp_c"],
                 })
